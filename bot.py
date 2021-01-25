@@ -22,8 +22,9 @@ async def on_message(msg):
   quote = search(message, phrase)
   highlightedQuote = replace(quote, phrase, f'*{phrase}*')
 
-  sus = randomListElement(SUSES, [4])
+  await msg.reply('> ' + highlightedQuote, file=discord.File('sus.jpg'))
 
-  await msg.reply(f'> {highlightedQuote}{sus}')
+  # // sus = randomListElement(SUSES, [4])
+  # // await msg.reply(f'> {highlightedQuote}{sus}')
 
 client.run(TOKEN)
