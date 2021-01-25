@@ -14,7 +14,7 @@ async def on_message(msg):
   if msg.author == client.user:
     return
 
-  message = msg.content.lower()
+  message = msg.content
   phrase = phraseInMessage(PHRASES, message)
   if phrase == 'none':
     return

@@ -4,6 +4,11 @@ load_dotenv()
 
 TOKEN = getenv('TOKEN')
 
+ID = getenv('ID')
+SECRET = getenv('SECRET')
+USERNAME = getenv('USERNAME')
+PASSWORD = getenv('PASSWORD')
+
 PHRASES = ['imposter', 'sus', 'among us']
 
 SUSES = ["""

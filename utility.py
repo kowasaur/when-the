@@ -4,7 +4,11 @@ import random
 # https://stackoverflow.com/a/5833319/13837629
 def search(text, phrase):
   '''Searches text for phrase and returns the phrase plus the two words on each side'''
-  result = re.search(r'(?:\S+\s+){0,2}\S*' + phrase + r'\S*(?:\s+\S+){0,2}', text, flags=re.MULTILINE)
+  result = re.search(
+    r'(?:\S+\s+){0,2}\S*' + phrase + r'\S*(?:\s+\S+){0,2}',
+    text.lower(),
+    flags=re.MULTILINE
+  )
   return result.group()
 
 def replace(text, replacee, replacer):
@@ -12,7 +16,7 @@ def replace(text, replacee, replacer):
 
 def phraseInMessage(listOfPhrases, message):
   for phrase in listOfPhrases:
-    if phrase in message:
+    if phrase in message.lower():
       return phrase
   return 'none'
 
