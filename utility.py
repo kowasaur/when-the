@@ -1,4 +1,3 @@
-from logging import log
 import re
 import random
 
@@ -38,4 +37,3 @@ def randomListElement(li, weights=[]):
       weight = 1
     combinedList.append((li[i], weight))
   return _weighted_choice(combinedList)
-
