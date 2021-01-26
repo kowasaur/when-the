@@ -14,9 +14,11 @@ def search(text, phrase):
 def replace(text, replacee, replacer):
   return re.sub(replacee, replacer, text)
 
-def phraseInMessage(listOfPhrases, message):
+def phraseInMessage(listOfPhrases, message, includePartial=False):
   for phrase in listOfPhrases:
-    if phrase in message.lower():
+    if includePartial and phrase in message.lower():
+      return phrase
+    elif re.search(r'(\W|^)' + phrase + r'(\W|$)', message.lower()):
       return phrase
   return 'none'
 
