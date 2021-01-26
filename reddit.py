@@ -72,13 +72,13 @@ def handleException(error):
 try:
   main()
 except PrawcoreException as e:
-  handleException()
+  handleException(e)
 except praw.exceptions.PRAWException as e:
-  handleException()
+  handleException(e)
 except praw.exceptions.ClientException as e:
-  handleException()
+  handleException(e)
 except praw.exceptions.APIException as e:
-  handleException()
+  handleException(e)
 except KeyboardInterrupt:
   print('manually ended')
 except Exception as e:
