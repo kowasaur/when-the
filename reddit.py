@@ -26,8 +26,11 @@ def doFunne(post, submission):
     highlightedQuote = replace(quote, phrase, f'*{phrase}*')
     
     sus = randomListElement(SUSES, [4])
-    submission.reply(f'> {highlightedQuote}\n```{sus}```')
-    print(submission.permalink)
+    try:
+      submission.reply(f'> {highlightedQuote}\n```{sus}```')
+      print(submission.permalink)
+    except:
+      print('failed to reply')
     return True
   else:
     return False
@@ -67,19 +70,22 @@ def handleException(error):
   print(error)
   sleep(15 * 60)
   print('Sleeping for 15 minutes')
-  main()
 
-try:
-  main()
-except PrawcoreException as e:
-  handleException(e)
-except praw.exceptions.PRAWException as e:
-  handleException(e)
-except praw.exceptions.ClientException as e:
-  handleException(e)
-except praw.exceptions.APIException as e:
-  handleException(e)
-except KeyboardInterrupt:
-  print('manually ended')
-except Exception as e:
-  print(e)
+running = True
+while running:
+  try:
+    main()
+  except PrawcoreException as e:
+    handleException(e)
+  except praw.exceptions.PRAWException as e:
+    handleException(e)
+  except praw.exceptions.ClientException as e:
+    handleException(e)
+  except praw.exceptions.APIException as e:
+    handleException(e)
+  except KeyboardInterrupt:
+    print('manually ended')
+    running = False
+  except Exception as e:
+    print(e)
+    running = False
